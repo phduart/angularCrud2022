@@ -1,4 +1,4 @@
-import { ClienteServiceService } from './services/clienteService.service';
+import { ClienteService} from './services/clienteService.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,9 +10,6 @@ export class AppComponent {
   title = 'angular-crud';
   transferencias: any[] = [];
 
-  constructor(private service: ClienteServiceService) {}
+  constructor(private service: ClienteService) {}
 
-  transferir($event: any) {
-    this.service.adicionar($event);
-  }
 }

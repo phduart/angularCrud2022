@@ -1,27 +1,43 @@
+import { Cliente } from './../models/clienteContatoResponse.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ClienteContatoResponse } from '../models/clienteContatoResponse.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteServiceService {
+export class ClienteService {
 
-  private listaTransferencia: any[];
+  private listaCliente: Cliente[];
+  private urlTodosClientes = 'http://localhost:8080/api/clientes/getClientes';
+  private urlGetCliente = 'http://localhost:8080/api/clientes/getCliente?id=';
+  private urlAddCliente = 'http://localhost:8080/api/clientes/addCliente';
 
-  constructor() {
-    this.listaTransferencia = [];
+  constructor(private httpClient: HttpClient) {
+    this.listaCliente = [];
+
   }
 
-  get transferencias() {
-    return this.listaTransferencia;
+  get clientes() {
+    return this.listaCliente;
   }
 
-  adicionar(transferencia: any) {
-    this.hidratar(transferencia);
-
-    this.listaTransferencia.push(transferencia);
+  todos() : Observable<ClienteContatoResponse> {
+      return this.httpClient.get<ClienteContatoResponse>(this.urlTodosClientes);
   }
 
-  private hidratar(transferencia: any) {
-    transferencia.data = new Date();
+  getCliente(id : number) : Observable<ClienteContatoResponse> {
+    return this.httpClient.get<ClienteContatoResponse>(this.urlGetCliente + id);
+  }
+
+  adicionar(cliente: Cliente) {
+    this.hidratar(cliente);
+
+    return this.httpClient.post<Cliente>(this.urlAddCliente, cliente);
+  }
+
+  private hidratar(cliente: Cliente) {
+    cliente.dt_create = new Date();
   }
 }

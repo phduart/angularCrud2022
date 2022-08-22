@@ -1,2 +1,7 @@
-<app-novo-cliente (aoTransferir)="transferir($event)"></app-novo-cliente>
-<app-lista></app-lista>
+<header>
+  <a routerLink="lista">DuarteApp</a>
+  <a routerLink="novo-cliente" routerLinkActive="ativo">Cadastrar Cliente</a>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -1,20 +1,30 @@
 <section class="container">
 
   <form class="formulario" (ngSubmit)="transferir()">
-      <h2 class="formulario_titulo">Nova Transferência</h2>
+      <h2 class="formulario_titulo">Novo Cliente</h2>
 
       <div class="form-field">
-        <label class="form-field_label" for="valor">Valor</label>
-        <input class="form-field_input" id="valor" type="text" [(ngModel)]="valor" name="valor">
+        <label class="form-field_label" for="name_client">Nome</label>
+        <input class="form-field_input" id="name_client" type="text" [(ngModel)]="name_client" name="name_client">
       </div>
 
       <div class="form-field">
-        <label class="form-field_label" for="destino">Destino</label>
-        <input class="form-field_input" id="valor" type="text" [(ngModel)]="destino" name="destino">
+        <label class="form-field_label" for="cpf_cnpj">CPF / CNPJ</label>
+        <input class="form-field_input" id="cpf_cnpj" type="text" [(ngModel)]="cpf_cnpj" name="cpf_cnpj">
+      </div>
+
+      <div class="form-field">
+        <label class="form-field_label" for="rg_ie">RG / IE</label>
+        <input class="form-field_input" id="rg_ie" type="text" [(ngModel)]="rg_ie" name="rg_ie">
+      </div>
+
+      <div class="form-field">
+        <label class="form-field_label" for="active">ATIVO</label>
+        <input class="form-field_input" id="active" type="text" [(ngModel)]="active" name="active">
       </div>
 
       <div class="botao-wrapper">
-      <button class="botao" type="submit">Transferir</button>
+      <button class="botao" type="submit">Cadastrar</button>
     </div>
     </form>
   </section>
